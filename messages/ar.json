@@ -1,0 +1,99 @@
+{
+  "NavBar": {
+    "Chat with your files": "الدردشة مع ملفات البي دي اف",
+    "Home": "الرئيسية",
+    "Pricing": "الأسعار",
+    "Contact": "تواصل معنا",
+    "Dashboard": "لوحة التحكم",
+    "Login": "الدخول",
+    "Try for Free": "جرب مجانا"
+  },
+  "Home": {
+    "Chat with your files": "الدردشة مع ملفاتك الخاصة",
+    "Let AI summarize, find information, translate, transcribe, and get citations from your files in seconds": "دع الذكاء الاصطناعي يلخص ويجد المعلومات ويترجمها وينسخها ويحصل على اقتباسات من ملفاتك في ثوانٍ",
+    "Upload your Files": "قم بتحميل ملفاتك",
+    "Easily add your files and start chat them": "أضف ملفاتك بسهولة وابدأ الدردشة معها",
+    "Ask Questions": "اسأل أسئلة",
+    "Ask AI any question about your document": "اسأل الذكاء الاصطناعي عن اي سؤال في ملفاتك",
+    "Get Answers": "احصل على الأجوبة",
+    "Get an answer from the document": "احصل على الأجوبة من ملفاتك",
+    "Start Now": "ابدأ الآن",
+    "Ideal for researchers, students and professionals": "مثالي للباحثين والطلاب والمحترفين"
+  },
+  "Login": {
+    "Login": "الدخول",
+    "Home": "الرئيسية",
+    "Email Address": "البريد الإلكتروني",
+    "Password": "كلمة المرور",
+    "Credential Login": "تسجيل الدخول",
+    "Or login with:": "أو قم بتسجيل الدخول باستخدام",
+    "Don not you have an account?": "هل ليس لديك حساب؟",
+    "Register": "التسجيل"
+  },
+  "Register": {
+    "Home2": "الرئيسية",
+    "Register": "التسجيل",
+    "Name": "الاسم",
+    "Email Address": "البريد الإلكتروني",
+    "Password": "كلمة المرور",
+    "Or register with": "أو قم بالتسجيل مع",
+    "Already have an account?": "لديك حساب مسبقا",
+    "Go to Login": "الدخول",
+    "Welcome": "مرحبا"
+  },
+  "ScocialRegister": {
+    "Sign In With Google": "تسجيل الدخول باستخدام جوجل"
+  },
+  "Sidebar": {
+    "Hi": "مرحبا",
+    "Welcome": "مرحبا",
+    "Files": "الملفات",
+    "Add new File": "اضف ملف جديد",
+    "Upgrade": "الترقية",
+    "Account": "حسابك"
+  },
+  "Logout": {
+    "Logout": "تسجيل الخروج"
+  },
+  "Files": {
+    "No files uploaded": "لم يتم تحميل أي ملفات",
+    "Upload your files now": "قم بتحميل ملفاتك الآن",
+    "Files": "ملفات",
+    "Created": "تاريخ",
+    "Title": "عنوان",
+    "Chat": "دردشة"
+  },
+  "UploadFormForPdf": {
+    "Upload your": "قم بتحميل ملفك",
+    "PDF Files": "PDF",
+    "Please wait until": "يرجى الانتظار حتى يتم الانتهاء من تحميل الملفات...لا تغلق الصفحة!",
+    "Creat chat": "انشئ دردشة",
+    "Drag & drop your PDF here, or click to select one": "اسحب الملف  الخاص بك وأفلِته هنا، أو انقر لتحديد ملف واحد",
+    "Drop the file here": "ضع الملف هنا"
+  },
+  "Upgrade": {
+    "Upgrade to Plus": "الترقية إلى بلس",
+    "Take advantage of the features after upgrading": "استفد من الميزات بعد الترقية",
+    "cancel any time": "إلغاء في أي وقت",
+    "Plus": "بلس",
+    "$20/mo": "20 دولار شهريا",
+    "Unlimited PDFs": "ملفات غير محدودة",
+    "Unlimited Questions": "اسئلة غير محدودة",
+    "2,000 Pages/PDF": "2000 صفحة لكل ملف ",
+    "32 MB/PDF": "32 ميجا بايت لكل ملف"
+  },
+  "SubscriptionButton": {
+    "Manage Subscriptions": "إدارة اشتراكك",
+    "Get Plus": "أكمل اشتراكك"
+  },
+  "Profile": {
+    "User Name": "الاسم",
+    "Age": "العمر",
+    "Sex": "الجنس",
+    "Job": "المهنة",
+    "Education": "التعليم",
+    "Interests": "الاهتمامات",
+    "Bio": "نبذة مختصر",
+    "Save Changes": "حفظ"
+  }
+}

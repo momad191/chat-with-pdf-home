@@ -1,0 +1,100 @@
+{
+  "NavBar": {
+    "Chat with files": "Chat with files",
+    "Home": "Home",
+    "Pricing": "Pricing",
+    "Contact": "Contact",
+    "Dashboard": "Dashboard",
+    "Login": "Login",
+    "Try for Free": "Try for Free"
+  },
+  "Home": {
+    "Chat with your files": "Chat with your files",
+    "Let AI summarize, find information, translate, transcribe, and get citations from your files in seconds": "Let AI summarize, find information, translate, transcribe, and get citations from your files in seconds",
+    "Upload your Files": "Upload your Files",
+    "Easily add your files and start chat them": "Easily add your files and start chat and summaraize them.",
+    "Ask Questions": "Ask Questions",
+    "Ask AI any question about your document": "Ask AI any question about your document",
+    "Get Answers": "Get Answers",
+    "Get an answer from the document": "Get an answer from the document",
+    "Start Now": "Start Now",
+    "Ideal for researchers, students and professionals": "Ideal for researchers, students and professionals"
+  },
+  "Login": {
+    "Login": "Login",
+    "Home": "Home",
+    "Email Address": "Email Address",
+    "Password": "Password",
+    "Credential Login": "Credential Login",
+    "Or login with:": "Or login with:",
+    "Don not you have an account?": "Don't you have an account?",
+    "Register": "Register"
+  },
+  "Register": {
+    "Home2": "Home",
+    "Register": "Register",
+    "Name": "Name",
+    "Email Address": "Email Address",
+    "Password": "Password",
+    "Or register with": "Or register with",
+    "Already have an account?": "Already have an account?",
+    "Go to Login": "Go to Login",
+    "Welcome": "Welcome",
+    "Sign In With Google": "Sign In With Google"
+  },
+  "ScocialRegister": {
+    "Sign In With Google": "Sign In With Google"
+  },
+  "Sidebar": {
+    "Hi": "Hi",
+    "Welcome": "Welcome",
+    "Files": "Files",
+    "Add new File": "Add new File",
+    "Upgrade": "Upgrade",
+    "Account": "Account"
+  },
+  "Logout": {
+    "Logout": "Logout"
+  },
+  "Files": {
+    "No files uploaded": "No files uploaded",
+    "Upload your files now": "Upload your files now",
+    "Files": "Files",
+    "Created": "Created",
+    "Title": "Title",
+    "Chat": "Chat"
+  },
+  "UploadFormForPdf": {
+    "Upload your": "Upload your",
+    "PDF Files": "PDF Files",
+    "Please wait until": "Please wait until the files have finished uploading...Do not close the page!",
+    "Creat chat": "Creat chat",
+    "Drag & drop your PDF here, or click to select one": "Drag & drop your PDF here, or click to select one",
+    "Drop the file here": "Drop the file here"
+  },
+  "Upgrade": {
+    "Upgrade to Plus": "Upgrade to Plus",
+    "Take advantage of the features after upgrading": "Take advantage of the features after upgrading",
+    "cancel any time": "cancel any time",
+    "Plus": "Plus",
+    "$20/mo": "$20/mo",
+    "Unlimited PDFs": "Unlimited PDFs",
+    "Unlimited Questions": "Unlimited Questions",
+    "2,000 Pages/PDF": "2,000 Pages/PDF",
+    "32 MB/PDF": "32 MB/PDF"
+  },
+  "SubscriptionButton": {
+    "Manage Subscriptions": "Manage Subscriptions",
+    "Get Plus": "complete your subscription"
+  },
+  "Profile": {
+    "User Name": "User Name",
+    "Age": "Age",
+    "Sex": "Sex",
+    "Job": "Job",
+    "Education": "Education",
+    "Interests": "Interests",
+    "Bio": "Bio",
+    "Save Changes": "Save Changes"
+  }
+}
