@@ -32,6 +32,7 @@
     "cheerio": "^1.0.0",
     "child_process": "^1.0.2",
     "clsx": "^2.1.1",
+    "d3-dsv": "^2.0.0",
     "dns": "^0.2.2",
     "dotenv": "^16.4.7",
     "fs": "^0.0.1-security",

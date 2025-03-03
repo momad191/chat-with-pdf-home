@@ -2,6 +2,7 @@ import { FaFolder, FaUser, FaCog } from "react-icons/fa";
 import { GiLevelFour } from "react-icons/gi";
 import { RiFileAddFill } from "react-icons/ri";
 import { MdOutlineHome } from "react-icons/md";
+import { MdMarkEmailRead } from "react-icons/md";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -14,7 +15,7 @@ const Sidebar = ({ isOpen, session }) => {
     <>
       {/* Sidebar */}
       <div
-        className={` absolute xl:w-[260px] md:w-[260px] w-full top-0 left-0 h-screen bg-gray-800 text-white shadow-lg transform transition-transform duration-300 ${
+        className={`absolute xl:w-[260px] md:w-[260px] w-[60%]  top-0 left-0 h-screen bg-gray-800 text-white shadow-lg transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } w-64`}
       >
@@ -59,18 +60,26 @@ const Sidebar = ({ isOpen, session }) => {
 
         <nav className="p-4 space-y-2 ">
           <Link
-            href="/dashboard/files"
-            className="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-all"
-          >
-            <FaFolder className="mr-3" size={18} />
-            {t("Files")}
-          </Link>
-          <Link
             href="/dashboard"
             className="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-all"
           >
             <RiFileAddFill className="mr-3" size={18} />
             {t("Add new File")}
+          </Link>
+          <Link
+            href="/dashboard/write"
+            className="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-all"
+          >
+            <MdMarkEmailRead className="mr-3" size={18} />
+            Write Email
+          </Link>
+
+          <Link
+            href="/dashboard/files"
+            className="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-all"
+          >
+            <FaFolder className="mr-3" size={18} />
+            {t("Files")}
           </Link>
 
           <Link

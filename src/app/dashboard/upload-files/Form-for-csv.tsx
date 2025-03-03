@@ -1,11 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState, useCallback } from "react";
-import { FaRegFileWord } from "react-icons/fa";
+import { GrDocumentCsv } from "react-icons/gr";
+
 import { useDropzone } from "react-dropzone";
 import { useTranslations } from "next-intl";
 
-export default function UploadFormForWord() {
+export default function UploadFormForCsv() {
   const t = useTranslations("UploadFormForPdf");
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
@@ -20,7 +21,7 @@ export default function UploadFormForWord() {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: { "application/docx": [".docx"] },
+    accept: { "application/csv": [".csv"] },
     maxFiles: 1,
   });
 
@@ -36,7 +37,7 @@ export default function UploadFormForWord() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await fetch("/api/upload-file/word", {
+      const res = await fetch("/api/upload-file/csv", {
         method: "POST",
         body: formData,
       });
@@ -62,8 +63,8 @@ export default function UploadFormForWord() {
         className="bg-white text-gray-800 rounded-lg shadow-lg p-8  flex-col gap-4 w-full max-w-lg"
       >
         <h2 className="text-2xl font-bold text-center flex items-center gap-2">
-          <FaRegFileWord className="text-red-500" />
-          {t("Upload your")} <span className="text-sky-500"> .docx Files</span>
+          <GrDocumentCsv className="text-red-500" />
+          {t("Upload your")} <span className="text-sky-500"> .CSV Files</span>
         </h2>
 
         <div

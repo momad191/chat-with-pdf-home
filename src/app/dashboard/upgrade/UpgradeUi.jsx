@@ -97,12 +97,14 @@ const Upgrade = ({ session, isPro }) => {
     },
   ];
 
+
+
   return (
-    <div className="md:flex">
+    <div className="md:flex ">
       <SidebarWrapper session={session} />
 
-      <div className="min-h-screen flex  items-center justify-center  w-full  bg-gradient-to-b bg-white p-6">
-        <div className="max-w-5xl w-full text-center">
+      <div className="min-h-screen flex  items-center justify-center  w-[100%]  bg-gradient-to-b bg-white p-6">
+        <div className="text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             {" "}
             {t("Upgrade to Plus")}
@@ -152,10 +154,13 @@ const Upgrade = ({ session, isPro }) => {
             </div>
           </div>
         </div>
+
+
       </div>
     </div>
   );
 };
+
 
 // Reusable input component
 function InputField({ label, name, value, onChange }) {

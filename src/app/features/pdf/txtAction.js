@@ -1,6 +1,6 @@
 "use server";
 require("dotenv").config();
-import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
+import { TextLoader } from "langchain/document_loaders/fs/text";
 import { ChatOpenAI } from "@langchain/openai";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
@@ -11,16 +11,16 @@ import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { createHistoryAwareRetriever } from "langchain/chains/history_aware_retriever";
 // import { MessagesPlaceholder } from "@langchain/core/prompts";
 import { auth } from "@/auth";
-  
+
 import { BufferMemory } from "langchain/memory";
 import { UpstashRedisChatMessageHistory } from "@langchain/community/stores/message/upstash_redis";
 import { RunnableSequence } from "@langchain/core/runnables";
 
-export async function Chat(text1, file1, file_id) {
+export async function ChatForTXT(text1, file1, file_id) {
   const session = await auth();
   const myfile = `\public/uploads/${session?.user?.email}/${file1}`;
   // console.log("File Path:", myfile);
-  const loader = new PDFLoader(myfile);
+  const loader = new TextLoader(myfile);
   const docs = await loader.load();
   // console.log("Docs Loaded:", docs.length);
 
@@ -66,7 +66,6 @@ export async function Chat(text1, file1, file_id) {
     chatHistory: {history}  
     {input}
   `);
-  
 
   ///////////////////////////////////////////DadaBase ridis for saving chats ///////////////////////////////////////
   const upstashMessageHistory = new UpstashRedisChatMessageHistory({

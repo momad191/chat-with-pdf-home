@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { join ,extname } from 'path';
 import { createFile } from "@/queries/files"; 
 import { dbConnect } from "@/lib/mongo";
-import { loadS3IntoPineconeDOCX } from "@/lib/pineconeDOCX";  
-import { loadS3IntoPineconeDOC } from "@/lib/pineconeDOC"; 
+// import { loadS3IntoPineconeDOCX } from "@/lib/pineconeDOCX";  
+// import { loadS3IntoPineconeDOC } from "@/lib/pineconeDOC"; 
 import { auth } from "@/auth";
 
 const server_url = process.env.NEXT_BASE_URL ;

@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+
 import "./globals.css";
 
 import { NextIntlClientProvider } from "next-intl";
@@ -6,13 +7,19 @@ import { getLocale, getMessages } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// export const metadata = {
+//   icons: {
+//     icon: "/chatbot.png",
+//     apple: "/chatbot.png",
+//   },
+//   title: "FaizBot Ai solutions for productivity",
+//   description: "Ai solutions for productivity",
+// };
+
 export const metadata = {
-  icons: {
-    icon: "/robot-icon.png",
-    apple: "/robot-icon.png",
-  },
   title: "FaizBot Ai solutions for productivity",
-  description: "Cameleast Ai solution",
+
+  icons: "/chatbot.png", // Update with your icon path
 };
 
 export default async function RootLayout({ children }) {

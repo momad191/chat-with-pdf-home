@@ -1,14 +1,29 @@
-"use client";
+"use client"; 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { BsFiletypeTxt } from "react-icons/bs";
+import { useDropzone } from "react-dropzone";
+import { useTranslations } from "next-intl";
 
 
 export default function UploadFormForTxt() {
+  const t = useTranslations("UploadFormForPdf");
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [responseMessage, setResponseMessage] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+
+    const onDrop = useCallback((acceptedFiles: File[]) => {
+      if (acceptedFiles.length > 0) {
+        setFile(acceptedFiles[0]);
+      }
+    }, []);
+  
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+      onDrop,
+      accept: { "application/txt": [".txt"] },
+      maxFiles: 1,
+    });
  
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +38,7 @@ export default function UploadFormForTxt() {
 
     const formData = new FormData();
     formData.append("file", file);
- 
+  
     try {
       const res = await fetch("/api/upload-file/txt", {
         method: "POST",
@@ -45,27 +60,43 @@ export default function UploadFormForTxt() {
   };
 
   return (
-    <div className="flex justify-center items-center  min-h-screen">
+    <div className="bg-white p-50">
       <form
         onSubmit={onSubmit}
-        className="bg-white text-gray-800 rounded-lg shadow-md p-10 flex flex-col gap-4 w-full max-w-md"
+        className="bg-white text-gray-800 rounded-lg shadow-lg p-8  flex-col gap-4 w-full max-w-lg"
       >
-        <h2 className="text-2xl font-bold text-center">  <BsFiletypeTxt className="bg-white text-gray-900"/>   Upload your <span className="bg-sky-500 p-2 rounded text-white text-2xl"> TXT File </span> </h2>
+        <h2 className="text-2xl font-bold text-center flex items-center gap-2">
+          <BsFiletypeTxt className="text-red-500" />
+          {t("Upload your")}{" "}
+          <span className="text-sky-500">.TXT File</span>
+        </h2>
 
-        <input
-          type="file"
-          name="file"
-          onChange={(e) => setFile(e.target.files?.[0] || null)}
-          className="block w-full border border-gray-300 rounded-md p-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
-          disabled={isUploading}
-        />
+        <div
+          {...getRootProps()}
+          className={`border-2 border-dashed p-6 rounded-lg cursor-pointer transition ${
+            isDragActive
+              ? "border-blue-500 bg-blue-100"
+              : "border-gray-300 bg-gray-50"
+          }  flex-col items-center justify-center text-gray-600 hover:border-sky-500 hover:bg-gray-100`}
+        >
+          <input {...getInputProps()} />
+          {file ? (
+            <p className="text-gray-700 font-semibold">{file.name}</p>
+          ) : isDragActive ? (
+            <p className="text-blue-500">{t("Drop the file here")}</p>
+          ) : (
+            <p>{t("Drag & drop your TXT file here")}</p> 
+          )}
+        </div>
 
         <button
           type="submit"
           disabled={isUploading}
-          className={`text-2xl w-full py-2 flex justify-center items-center rounded-md text-white font-semibold transition ${
-            isUploading ? "bg-gray-400 cursor-not-allowed" : "bg-sky-500 hover:bg-sky-600"
-          }`}
+          className={`w-full mt-5 py-3 rounded-md text-white font-semibold transition ${
+            isUploading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-sky-500 hover:bg-sky-600"
+          } flex justify-center items-center gap-2`}
         >
           {isUploading ? (
             <>
@@ -73,18 +104,17 @@ export default function UploadFormForTxt() {
                 className="animate-spin h-5 w-5 mr-2 border-white border-t-2 border-l-2 rounded-full"
                 viewBox="0 0 24 24"
               ></svg>
-              U Please wait until the files have finished uploading...
-              Do not close the page!
+              {t("Please wait until")}
             </>
           ) : (
-            "Creat chat"
+            t("Creat chat")
           )}
         </button>
       </form>
 
       {responseMessage && (
         <div
-          className={`mt-4 p-4 rounded-lg shadow-lg text-center max-w-md w-full ${
+          className={`mt-4 p-4 rounded-lg shadow-md text-center max-w-lg w-full ${
             responseMessage.startsWith("File uploaded successfully!")
               ? "bg-green-500 text-white"
               : "bg-red-500 text-white"

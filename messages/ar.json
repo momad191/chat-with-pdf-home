@@ -47,10 +47,14 @@
   "Sidebar": {
     "Hi": "مرحبا",
     "Welcome": "مرحبا",
-    "Files": "الملفات",
+    "Files": "ملفاتك",
     "Add new File": "اضف ملف جديد",
     "Upgrade": "الترقية",
-    "Account": "حسابك"
+    "Account": "حسابك"  
+  },
+  "SidebarWrapper": {
+    "Open Side menu": "فتح القائمة الجانبية",
+    "Close Side menu": "اغلاق القائمة الجانبية" 
   },
   "Logout": {
     "Logout": "تسجيل الخروج"
@@ -69,7 +73,9 @@
     "Please wait until": "يرجى الانتظار حتى يتم الانتهاء من تحميل الملفات...لا تغلق الصفحة!",
     "Creat chat": "انشئ دردشة",
     "Drag & drop your PDF here, or click to select one": "اسحب الملف  الخاص بك وأفلِته هنا، أو انقر لتحديد ملف واحد",
-    "Drop the file here": "ضع الملف هنا"
+    "Drop the file here": "ضع الملف هنا",
+    "Drag & drop your TXT file here": "اسحب الملف  الخاص بك وأفلِته هنا، أو انقر لتحديد ملف واحد" 
+
   },
   "Upgrade": {
     "Upgrade to Plus": "الترقية إلى بلس",

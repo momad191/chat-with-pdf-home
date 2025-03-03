@@ -3,7 +3,7 @@
   import { join ,extname } from 'path';
   import { createFile } from "@/queries/files";
   import { dbConnect } from "@/lib/mongo";
-  import { loadS3IntoPineconeTEXT } from "@/lib/pineconeTEXT"; 
+  // import { loadS3IntoPineconeTEXT } from "@/lib/pineconeTEXT"; 
   import { auth } from "@/auth";
 
   const server_url = process.env.NEXT_BASE_URL ;
@@ -31,7 +31,7 @@
     const folderPath = join(process.cwd(), 'public', `uploads/${foldername}`);
     const filePath = join(folderPath, file.name);
     const fileUrl = `${server_url}/uploads/${foldername}/${file.name}`; // Relative URL to access the file
-    try {
+    try { 
       const newFile = {
         file_name:file.name,
         file_url:fileUrl,

@@ -2,10 +2,18 @@
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { FaUser } from "react-icons/fa";
+import { TbFileTypeDocx } from "react-icons/tb";
+import { GrDocumentCsv } from "react-icons/gr";
 import { Chat } from "./pdfAction";
+import { ChatForTXT } from "./txtAction";
+import { ChatForDOCX } from "./docxAction";
+import { ChatForCSV } from "./csvAction";
 
+import { extname } from "path";
 function PdfUi2({ file_id, chat_data }) {
   const [file, setFile] = useState({});
+  const fileExtension = file.file_name ? extname(file.file_name) : "";
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -13,6 +21,20 @@ function PdfUi2({ file_id, chat_data }) {
   const messageEndRef = useRef(null);
 
   const toggleChatbot = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    async function fetchFiles() {
+      try {
+        const response = await fetch(`/api/file?id=${file_id}`);
+        const data = await response.json();
+        setFile(data.file || {}); // Ensure we don't set undefined
+      } catch (error) {
+        console.error("Error fetching files:", error);
+      }
+    }
+
+    fetchFiles();
+  }, [file_id]); // Ensure file_id is a dependency
 
   const sendMessage = async () => {
     if (input.trim()) {
@@ -49,6 +71,111 @@ function PdfUi2({ file_id, chat_data }) {
     }
   };
 
+  const sendMessageTXT = async () => {
+    if (input.trim()) {
+      const newMessages = [...messages, { sender: "user", text: input }];
+      setMessages(newMessages);
+      setInput("");
+      setLoading(true);
+
+      try {
+        const response = await ChatForTXT(input, file.file_name, file_id);
+        setLoading(false);
+
+        // Show typing effect by splitting response text
+        let index = 0;
+        const responseText = { sender: "bot", text: "" };
+        const streamInterval = setInterval(() => {
+          if (index < response.length) {
+            responseText.text += response[index];
+            setMessages((prevMessages) => [
+              ...prevMessages.slice(0, -1),
+              responseText,
+            ]);
+            index++;
+          } else {
+            clearInterval(streamInterval);
+          }
+        }, 10);
+
+        setMessages((prevMessages) => [...prevMessages, responseText]);
+      } catch (error) {
+        console.error("Error fetching response:", error);
+        setLoading(false);
+      }
+    }
+  };
+
+  const sendMessageDOCX = async () => {
+    if (input.trim()) {
+      const newMessages = [...messages, { sender: "user", text: input }];
+      setMessages(newMessages);
+      setInput("");
+      setLoading(true);
+
+      try {
+        const response = await ChatForDOCX(input, file.file_name, file_id);
+        setLoading(false);
+
+        // Show typing effect by splitting response text
+        let index = 0;
+        const responseText = { sender: "bot", text: "" };
+        const streamInterval = setInterval(() => {
+          if (index < response.length) {
+            responseText.text += response[index];
+            setMessages((prevMessages) => [
+              ...prevMessages.slice(0, -1),
+              responseText,
+            ]);
+            index++;
+          } else {
+            clearInterval(streamInterval);
+          }
+        }, 10);
+
+        setMessages((prevMessages) => [...prevMessages, responseText]);
+      } catch (error) {
+        console.error("Error fetching response:", error);
+        setLoading(false);
+      }
+    }
+  };
+
+  const sendMessageCSV = async () => {
+    if (input.trim()) {
+      const newMessages = [...messages, { sender: "user", text: input }];
+      setMessages(newMessages);
+      setInput("");
+      setLoading(true);
+
+      try {
+        const response = await ChatForCSV(input, file.file_name, file_id);
+        setLoading(false);
+
+        // Show typing effect by splitting response text
+        let index = 0;
+        const responseText = { sender: "bot", text: "" };
+        const streamInterval = setInterval(() => {
+          if (index < response.length) {
+            responseText.text += response[index];
+            setMessages((prevMessages) => [
+              ...prevMessages.slice(0, -1),
+              responseText,
+            ]);
+            index++;
+          } else {
+            clearInterval(streamInterval);
+          }
+        }, 10);
+
+        setMessages((prevMessages) => [...prevMessages, responseText]);
+      } catch (error) {
+        console.error("Error fetching response:", error);
+        setLoading(false);
+      }
+    }
+  };
+
   useEffect(() => {
     if (messageEndRef.current) {
       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -56,28 +183,72 @@ function PdfUi2({ file_id, chat_data }) {
   }, [messages, loading]);
 
   const handleEnterKey = (event) => {
-    if (event.key === "Enter") sendMessage();
+    const fileExtension = extname(file.file_name);
+
+    if (fileExtension === ".pdf" && event.key === "Enter") {
+      sendMessage();
+    }
+    if (fileExtension === ".txt" && event.key === "Enter") {
+      sendMessageTXT();
+    }
+    if (fileExtension === ".docx" && event.key === "Enter") {
+      sendMessageDOCX();
+    }
+    if (fileExtension === ".csv" && event.key === "Enter") {
+      sendMessageCSV();
+    }
   };
 
-  useEffect(() => {
-    async function fetchFiles() {
-      try {
-        const response = await fetch(`/api/file?id=${file_id}`);
-        const data = await response.json();
-        setFile(data.file);
-      } catch (error) {
-        console.error("Error fetching files:", error);
-      }
-    }
+  const handleSubmitButton = () => {
+    const fileExtension = extname(file.file_name);
 
-    fetchFiles();
-  }, []);
+    if (fileExtension === ".pdf") {
+      sendMessage();
+    }
+    if (fileExtension === ".txt") {
+      sendMessageTXT();
+    }
+    if (fileExtension === ".docx") {
+      sendMessageDOCX();
+    }
+    if (fileExtension === ".csv") {
+      sendMessageCSV();
+    }
+  };
 
   return (
-    <div className="flex bottom-4 right-4">
-      <iframe src={`${file.file_url}`} className="w-[50%] h-screen"></iframe>
+    <div className="flex bottom-4 right-4 bg-white">
+      {fileExtension === ".docx" && (
+        <div className="w-[50%]  items-center justify-center">
+          <button className="bg-gray-800 text-white p-8 flex items-center justify-center gap-4 w-full h-21  text-4xl">
+            <TbFileTypeDocx /> this is Word Docx file
+          </button>
+        </div>
+      )}
 
-      <div className=" w-[50%] h-screen bg-[#27272c] text-white   shadow-lg flex flex-col transition-all duration-500">
+      {fileExtension === ".CSV" && (
+        <div className="w-[50%]  items-center justify-center">
+          <button className="bg-gray-800 text-white p-8 flex items-center justify-center gap-4 w-full h-21  text-4xl">
+            <GrDocumentCsv /> this is CSV file
+          </button>
+        </div>
+      )}
+
+      {fileExtension === ".pdf" && (
+        <iframe src={`${file.file_url}`} className="w-[50%] h-screen"></iframe>
+      )}
+      {fileExtension === ".txt" && (
+        <iframe src={`${file.file_url}`} className="w-[50%] h-screen"></iframe>
+      )}
+
+      <div
+        className={`h-screen bg-[#27272c] text-white   shadow-lg flex flex-col transition-all duration-500
+           ${
+             fileExtension === ".docx" || fileExtension === ".docx"
+               ? `w-[50%]`
+               : "w-[50%]"
+           } `}
+      >
         <header className="flex justify-between p-3 border-b border-black">
           <div className="flex flex-row items-center justify-start ">
             <Image
@@ -88,7 +259,7 @@ function PdfUi2({ file_id, chat_data }) {
               className="rounded-xl mr-3 mt-4"
             />
             <h3 className="text-accent text-sm">
-              Chat with your file {file.file_name}{" "}
+              Chat with your file {file.file_name}
             </h3>
           </div>
         </header>
@@ -188,7 +359,7 @@ function PdfUi2({ file_id, chat_data }) {
             className="flex-1 px-3 py-2 rounded-full text-black focus:outline-none"
           />
           <button
-            onClick={sendMessage}
+            onClick={handleSubmitButton}
             className="ml-1 w-10 h-10 bg-accent rounded-full flex items-center justify-center"
           >
             ➤

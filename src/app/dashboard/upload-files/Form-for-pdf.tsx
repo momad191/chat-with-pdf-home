@@ -60,7 +60,7 @@ export default function UploadFormForPdf() {
   };
 
   return (
-    <div className="  bg-white p-50">
+    <div className="bg-white p-50">
       <form
         onSubmit={onSubmit}
         className="bg-white text-gray-800 rounded-lg shadow-lg p-8  flex-col gap-4 w-full max-w-lg"

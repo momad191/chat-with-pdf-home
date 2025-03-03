@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export default function ProfileUi({ session }) {
+ 
   const t = useTranslations("Profile");
   const router = useRouter();
   const [user, setUser] = useState({
@@ -19,6 +20,7 @@ export default function ProfileUi({ session }) {
     email: "",
     bio: "",
   });
+
   useEffect(() => {
     fetch("/api/users/profile")
       .then((res) => res.json())
@@ -62,10 +64,15 @@ export default function ProfileUi({ session }) {
     }
   };
 
+
+ 
+
+   
+
   return (
-    <div className="md:flex bg-white text-black items-center justify-center h-screen">
+    <div className="md:flex bg-white text-black items-center justify-center ">
       <SidebarWrapper session={session} />
-      <div className="w-full md:w-[60%] h-screen bg-white shadow-lg rounded p-6">
+      <div className="w-full md:w-[60%]  bg-white shadow-lg rounded p-6">
         <div>
           <div className="flex items-center gap-4 mb-6">
             <Image
@@ -94,12 +101,21 @@ export default function ProfileUi({ session }) {
               value={user.age || ""}
               onChange={handleChange}
             />
-            <InputField
-              label={t("Sex")}
-              name="sex"
-              value={user.sex || ""}
-              onChange={handleChange}
-            />
+         
+            <div className="flex flex-col space-y-2">
+              <label className="text-gray-700 font-semibold">{t("Sex")}</label>
+              <select
+                className="w-full bg-gray-200 text-black border-2 border-gray-100 p-2 rounded-md focus:ring focus:ring-gray-300 outline-none"
+                name="sex"
+                value={user.sex || ""}
+                onChange={handleChange}
+              >
+              <option key={1} value="male"> male </option>
+              <option key={2} value="female"> female </option>
+              
+              </select>
+            </div>
+
             <InputField
               label={t("Job")}
               name="job"
@@ -124,6 +140,8 @@ export default function ProfileUi({ session }) {
               value={user.bio || ""}
               onChange={handleChange}
             />
+
+
             <button
               type="submit"
               className="col-span-2 mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg border-2 border-blue-700 font-semibold 
@@ -168,3 +186,6 @@ function Textarea({ label, name, value, onChange }) {
     </div>
   );
 }
+
+
+ 

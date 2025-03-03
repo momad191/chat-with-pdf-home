@@ -53,6 +53,10 @@
     "Upgrade": "Upgrade",
     "Account": "Account"
   },
+  "SidebarWrapper": {
+    "Open Side menu": "Open Side menu",
+    "Close Side menu": "Close Side menu" 
+  },
   "Logout": {
     "Logout": "Logout"
   },
@@ -70,7 +74,9 @@
     "Please wait until": "Please wait until the files have finished uploading...Do not close the page!",
     "Creat chat": "Creat chat",
     "Drag & drop your PDF here, or click to select one": "Drag & drop your PDF here, or click to select one",
-    "Drop the file here": "Drop the file here"
+    "Drop the file here": "Drop the file here",
+    "Drag & drop your TXT file here": "Drag & drop your TXT here, or click to select one"
+
   },
   "Upgrade": {
     "Upgrade to Plus": "Upgrade to Plus",
