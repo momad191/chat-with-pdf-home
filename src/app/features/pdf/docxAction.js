@@ -15,7 +15,7 @@
   import { BufferMemory } from "langchain/memory";
   import { UpstashRedisChatMessageHistory } from "@langchain/community/stores/message/upstash_redis";
   import { RunnableSequence } from "@langchain/core/runnables";
-   
+    
   export async function ChatForDOCX(text1, file1, file_id) {
     const session = await auth();
     const myfile = `\public/uploads/${session?.user?.email}/${file1}`;

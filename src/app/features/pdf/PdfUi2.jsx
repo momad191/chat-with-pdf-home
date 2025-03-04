@@ -9,8 +9,15 @@ import { ChatForTXT } from "./txtAction";
 import { ChatForDOCX } from "./docxAction";
 import { ChatForCSV } from "./csvAction";
 
+import Docx from "./viewer/docx";
+import Csv from "./viewer/csv";
+
+import { useTranslations } from "next-intl";
+
 import { extname } from "path";
 function PdfUi2({ file_id, chat_data }) {
+  const t = useTranslations("PdfUi2");
+
   const [file, setFile] = useState({});
   const fileExtension = file.file_name ? extname(file.file_name) : "";
 
@@ -19,6 +26,8 @@ function PdfUi2({ file_id, chat_data }) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messageEndRef = useRef(null);
+
+  const [show, setShow] = useState(true);
 
   const toggleChatbot = () => setIsOpen(!isOpen);
 
@@ -36,15 +45,15 @@ function PdfUi2({ file_id, chat_data }) {
     fetchFiles();
   }, [file_id]); // Ensure file_id is a dependency
 
-  const sendMessage = async () => {
-    if (input.trim()) {
-      const newMessages = [...messages, { sender: "user", text: input }];
+  const sendMessage = async (msg) => {
+    if (msg.trim()) {
+      const newMessages = [...messages, { sender: "user", text: msg }];
       setMessages(newMessages);
       setInput("");
       setLoading(true);
 
       try {
-        const response = await Chat(input, file.file_name, file_id);
+        const response = await Chat(msg, file.file_name, file_id);
         setLoading(false);
 
         // Show typing effect by splitting response text
@@ -71,15 +80,15 @@ function PdfUi2({ file_id, chat_data }) {
     }
   };
 
-  const sendMessageTXT = async () => {
-    if (input.trim()) {
-      const newMessages = [...messages, { sender: "user", text: input }];
+  const sendMessageTXT = async (msg) => {
+    if (msg.trim()) {
+      const newMessages = [...messages, { sender: "user", text: msg }];
       setMessages(newMessages);
       setInput("");
       setLoading(true);
 
       try {
-        const response = await ChatForTXT(input, file.file_name, file_id);
+        const response = await ChatForTXT(msg, file.file_name, file_id);
         setLoading(false);
 
         // Show typing effect by splitting response text
@@ -106,15 +115,15 @@ function PdfUi2({ file_id, chat_data }) {
     }
   };
 
-  const sendMessageDOCX = async () => {
-    if (input.trim()) {
-      const newMessages = [...messages, { sender: "user", text: input }];
+  const sendMessageDOCX = async (msg) => {
+    if (msg.trim()) {
+      const newMessages = [...messages, { sender: "user", text: msg }];
       setMessages(newMessages);
       setInput("");
       setLoading(true);
 
       try {
-        const response = await ChatForDOCX(input, file.file_name, file_id);
+        const response = await ChatForDOCX(msg, file.file_name, file_id);
         setLoading(false);
 
         // Show typing effect by splitting response text
@@ -141,15 +150,15 @@ function PdfUi2({ file_id, chat_data }) {
     }
   };
 
-  const sendMessageCSV = async () => {
-    if (input.trim()) {
-      const newMessages = [...messages, { sender: "user", text: input }];
+  const sendMessageCSV = async (msg) => {
+    if (msg.trim()) {
+      const newMessages = [...messages, { sender: "user", text: msg }];
       setMessages(newMessages);
       setInput("");
       setLoading(true);
 
       try {
-        const response = await ChatForCSV(input, file.file_name, file_id);
+        const response = await ChatForCSV(msg, file.file_name, file_id);
         setLoading(false);
 
         // Show typing effect by splitting response text
@@ -186,16 +195,16 @@ function PdfUi2({ file_id, chat_data }) {
     const fileExtension = extname(file.file_name);
 
     if (fileExtension === ".pdf" && event.key === "Enter") {
-      sendMessage();
+      sendMessage(input);
     }
     if (fileExtension === ".txt" && event.key === "Enter") {
-      sendMessageTXT();
+      sendMessageTXT(input);
     }
     if (fileExtension === ".docx" && event.key === "Enter") {
-      sendMessageDOCX();
+      sendMessageDOCX(input);
     }
     if (fileExtension === ".csv" && event.key === "Enter") {
-      sendMessageCSV();
+      sendMessageCSV(input);
     }
   };
 
@@ -203,34 +212,78 @@ function PdfUi2({ file_id, chat_data }) {
     const fileExtension = extname(file.file_name);
 
     if (fileExtension === ".pdf") {
-      sendMessage();
+      sendMessage(input);
     }
     if (fileExtension === ".txt") {
-      sendMessageTXT();
+      sendMessageTXT(input);
     }
     if (fileExtension === ".docx") {
-      sendMessageDOCX();
+      sendMessageDOCX(input);
     }
     if (fileExtension === ".csv") {
-      sendMessageCSV();
+      sendMessageCSV(input);
+    }
+  };
+
+  const giveSummaryMessage = () => {
+    const msg = t("summarize the provided context");
+    const fileExtension = extname(file.file_name);
+    if (fileExtension === ".pdf") {
+      sendMessage(msg);
+      setShow(false);
+    }
+    if (fileExtension === ".txt") {
+      sendMessageTXT(msg);
+      setShow(false);
+    }
+    if (fileExtension === ".docx") {
+      sendMessageDOCX(msg);
+      setShow(false);
+    }
+    if (fileExtension === ".csv") {
+      sendMessageCSV(msg);
+      setShow(false);
+    }
+  };
+  const giveIdeaMessage = () => {
+    const msg = t("What is the main idea of the provided context");
+    const fileExtension = extname(file.file_name);
+    if (fileExtension === ".pdf") {
+      sendMessage(msg);
+      setShow(false);
+    }
+    if (fileExtension === ".txt") {
+      sendMessageTXT(msg);
+      setShow(false);
+    }
+    if (fileExtension === ".docx") {
+      sendMessageDOCX(msg);
+      setShow(false);
+    }
+    if (fileExtension === ".csv") {
+      sendMessageCSV(msg);
+      setShow(false);
     }
   };
 
   return (
     <div className="flex bottom-4 right-4 bg-white">
       {fileExtension === ".docx" && (
-        <div className="w-[50%]  items-center justify-center">
+        <div className="w-[60%]   items-center justify-center">
           <button className="bg-gray-800 text-white p-8 flex items-center justify-center gap-4 w-full h-21  text-4xl">
             <TbFileTypeDocx /> this is Word Docx file
           </button>
+
+          <Docx filePath={`/uploads/${file.user_email}/${file.file_name}`} />
         </div>
       )}
 
-      {fileExtension === ".CSV" && (
+      {fileExtension === ".csv" && (
         <div className="w-[50%]  items-center justify-center">
           <button className="bg-gray-800 text-white p-8 flex items-center justify-center gap-4 w-full h-21  text-4xl">
             <GrDocumentCsv /> this is CSV file
           </button>
+          <Csv filePath={`/uploads/${file.user_email}/${file.file_name}`} />
         </div>
       )}
 
@@ -242,12 +295,7 @@ function PdfUi2({ file_id, chat_data }) {
       )}
 
       <div
-        className={`h-screen bg-[#27272c] text-white   shadow-lg flex flex-col transition-all duration-500
-           ${
-             fileExtension === ".docx" || fileExtension === ".docx"
-               ? `w-[50%]`
-               : "w-[50%]"
-           } `}
+        className={`h-screen bg-[#27272c] text-white w-[50%]   shadow-lg flex flex-col transition-all duration-500 `}
       >
         <header className="flex justify-between p-3 border-b border-black">
           <div className="flex flex-row items-center justify-start ">
@@ -349,6 +397,27 @@ function PdfUi2({ file_id, chat_data }) {
         </div>
 
         {/* Input Area */}
+        {messages.length < 1 && (
+          <div className={`flex  w-full text-sm `}>
+            <button
+              onClick={giveSummaryMessage}
+              className={`w-[30%] mt-10 ml-5 px-4 py-2  rounded-xl bg-gray-400 text-black  hover:bg-sky-500 hover:text-black items-center justify-center ${
+                show === true ? `` : `hidden`
+              }`}
+            >
+              {t("summarize the provided context")} ➤
+            </button>
+            <button
+              onClick={giveIdeaMessage}
+              className={`w-[30%] mt-10 ml-5 px-4 py-2 rounded-xl bg-gray-400 text-black  hover:bg-sky-500 hover:text-black items-center justify-center ${
+                show === true ? `` : `hidden`
+              }`}
+            >
+              {t("What is the main idea of the provided context")}➤
+            </button>
+          </div>
+        )}
+
         <div className="p-3 flex items-center">
           <input
             type="text"

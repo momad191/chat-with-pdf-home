@@ -50,11 +50,11 @@
     "Files": "ملفاتك",
     "Add new File": "اضف ملف جديد",
     "Upgrade": "الترقية",
-    "Account": "حسابك"  
+    "Account": "حسابك"
   },
   "SidebarWrapper": {
     "Open Side menu": "فتح القائمة الجانبية",
-    "Close Side menu": "اغلاق القائمة الجانبية" 
+    "Close Side menu": "اغلاق القائمة الجانبية"
   },
   "Logout": {
     "Logout": "تسجيل الخروج"
@@ -74,8 +74,7 @@
     "Creat chat": "انشئ دردشة",
     "Drag & drop your PDF here, or click to select one": "اسحب الملف  الخاص بك وأفلِته هنا، أو انقر لتحديد ملف واحد",
     "Drop the file here": "ضع الملف هنا",
-    "Drag & drop your TXT file here": "اسحب الملف  الخاص بك وأفلِته هنا، أو انقر لتحديد ملف واحد" 
-
+    "Drag & drop your TXT file here": "اسحب الملف  الخاص بك وأفلِته هنا، أو انقر لتحديد ملف واحد"
   },
   "Upgrade": {
     "Upgrade to Plus": "الترقية إلى بلس",
@@ -101,5 +100,9 @@
     "Interests": "الاهتمامات",
     "Bio": "نبذة مختصر",
     "Save Changes": "حفظ"
+  },
+  "PdfUi2": {
+    "summarize the provided context": "قم بتلخيص السياق المقدم",
+    "What is the main idea of the provided context": "ما هي الفكرة الرئيسية للسياق المقدم؟"
   }
 }

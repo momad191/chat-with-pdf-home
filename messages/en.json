@@ -55,7 +55,7 @@
   },
   "SidebarWrapper": {
     "Open Side menu": "Open Side menu",
-    "Close Side menu": "Close Side menu" 
+    "Close Side menu": "Close Side menu"
   },
   "Logout": {
     "Logout": "Logout"
@@ -76,7 +76,6 @@
     "Drag & drop your PDF here, or click to select one": "Drag & drop your PDF here, or click to select one",
     "Drop the file here": "Drop the file here",
     "Drag & drop your TXT file here": "Drag & drop your TXT here, or click to select one"
-
   },
   "Upgrade": {
     "Upgrade to Plus": "Upgrade to Plus",
@@ -102,5 +101,9 @@
     "Interests": "Interests",
     "Bio": "Bio",
     "Save Changes": "Save Changes"
+  },
+  "PdfUi2": {
+    "summarize the provided context": "summarize the provided context",
+    "What is the main idea of the provided context": "What is the main idea of the provided context"
   }
 }

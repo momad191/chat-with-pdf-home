@@ -1,6 +1,8 @@
 "use server";
 require("dotenv").config();
+
 import { TextLoader } from "langchain/document_loaders/fs/text";
+
 import { ChatOpenAI } from "@langchain/openai";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
@@ -27,7 +29,7 @@ export async function ChatForTXT(text1, file1, file_id) {
   const llm = new ChatOpenAI({
     model: "gpt-3.5-turbo",
     apiKey: process.env.OPENAI_API_KEY,
-    temperature: 0.5,
+    temperature: 0,
   });
 
   const textSplitter = new RecursiveCharacterTextSplitter({
@@ -49,23 +51,21 @@ export async function ChatForTXT(text1, file1, file_id) {
   const qaPrompt = ChatPromptTemplate.fromTemplate(`
     You are an advanced AI assistant with access to a specific document uploaded by the user. Your task is to answer questions **strictly based on the provided document** and nothing else.
     **Guidelines:**
-    - **Only use information from the document.** If the answer is not found, respond: "I couldn't find relevant information."  
+    - **Only use information from the context.** If the answer is not found in the context, respond: "I couldn't find relevant information."  
     - **Do not generate or assume details outside the document's context.**  
     - **Provide citations (sections, page numbers) when applicable.**  
     - **Ensure answers are concise, yet complete and clear.**  
     - **Preserve the document’s original meaning without adding assumptions.**  
-    - **Summarize or translate content when explicitly requested by the user.**  
-    - **If listing multiple points, format them as separate numbered items.**  
-  
+    - **Summarize or translate content when explicitly requested by the input.**  
     **Context Block:**  
     START CONTEXT BLOCK  
     Context: {context}  
     END OF CONTEXT BLOCK  
-  
     Now, based on the provided context, answer the user’s question in the same language as the input.  
     chatHistory: {history}  
     {input}
   `);
+
 
   ///////////////////////////////////////////DadaBase ridis for saving chats ///////////////////////////////////////
   const upstashMessageHistory = new UpstashRedisChatMessageHistory({

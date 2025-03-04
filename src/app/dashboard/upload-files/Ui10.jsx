@@ -99,14 +99,14 @@ const UploadFileUi10 = () => {
             .TXT Files
           </button>
 
-          {/* <button
+           <button
             onClick={changeToCsv}
             className={`bg-sky-300 text-black p-7 hover:bg-sky-500 hover:text-white  
               ${isCSV && `bg-sky-800 text-white`}
               `}
           >
             .CSV Files
-          </button> */}
+          </button>
         </div>
         <div className="md:flex  justfy-center  items-center  ">
           {isPDF && <UploadFormForPdf />}
