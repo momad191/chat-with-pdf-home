@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaFileUpload } from "react-icons/fa";
 import { BsChatFill } from "react-icons/bs";
@@ -7,25 +7,37 @@ import { BsChatDotsFill } from "react-icons/bs";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
+import GetDefaultLanguage from "@/lib/getDefaultLanguage";
+
 const Home = ({ session }) => {
   const t = useTranslations("Home");
 
+  const [current_language, setCurrent_Language] = useState("");
+
+  useEffect(() => {
+    const lang = GetDefaultLanguage();
+    setCurrent_Language(lang);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col  ">
+    <div
+      className="min-h-screen flex flex-col bg-gray-800 text-white"
+      dir={`${current_language === "ar" ? "rtl" : "ltr"}`}
+    >
       {/* Main Section */}
-      <main className="flex-grow bg-gradient-to-b bg-white flex items-center justify-center text-center">
+      <main className="flex-grow bg-gradient-to-b  flex items-center justify-center text-center">
         <div className="container mx-auto px-4">
           {/* Welcome Text */}
 
-          <h1 className=" mt-5 text-5xl md:text-6xl font-bold text-gray-800 mb-4 transform transition-all duration-700 ease-in-out animate-bounce">
+          <h1 className=" mt-5 text-5xl md:text-6xl font-bold  mb-4 transform transition-all duration-700 ease-in-out animate-bounce">
             <p className="rtl:ml-0"> {t("Chat with your files")} </p>
           </h1>
-          <p className="text-lg  text-gray-600 mb-8">
+          <p className="text-lg   mb-8">
             {t(
               "Let AI summarize, find information, translate, transcribe, and get citations from your files in seconds"
             )}
           </p>
-          <p className="text-lg  text-gray-600 mb-8">
+          <p className="text-lg   mb-8">
             {t("Ideal for researchers, students and professionals")}
           </p>
 
@@ -116,13 +128,13 @@ const Home = ({ session }) => {
           </div>
           {session ? (
             <Link href={`/dashboard`}>
-              <button className="bg-gray-800 text-white font-bold text-2xl px-6 py-3 rounded-xl  hover:bg-gray-600 transition-all">
+              <button className="bg-sky-500 text-white font-bold text-2xl px-6 py-3 rounded-xl  hover:bg-gray-600 transition-all">
                 {t("Start Now")}
               </button>
             </Link>
           ) : (
             <Link href={`/register`}>
-              <button className="bg-gray-800 text-white font-bold text-2xl px-6 py-3 rounded-xl   hover:bg-gray-600 transition-all">
+              <button className="bg-sky-500 text-white font-bold text-2xl px-6 py-3 rounded-xl   hover:bg-gray-600 transition-all">
                 {t("Start Now")}
               </button>
             </Link>

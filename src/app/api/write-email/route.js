@@ -83,9 +83,12 @@ export async function POST(req) {
     const newEmail = {
       subject: response.subject,
       greeting: response.greeting,
+      message_body:response.message_body,
       signature: response.signature,
       user_email: session?.user?.email,
     };
+
+    console.log(newEmail)
 
     await createEmail(newEmail);
 

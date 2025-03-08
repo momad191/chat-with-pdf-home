@@ -16,11 +16,11 @@ import { useTranslations } from "next-intl";
 const Navbar = ({ session }) => {
   const t = useTranslations("NavBar");
 
-  const [language, setLanguage] = useState("");
+  const [current_language, setCurrent_Language] = useState("");
 
   useEffect(() => {
     const lang = GetDefaultLanguage();
-    setLanguage(lang);
+    setCurrent_Language(lang);
   }, []);
 
   const router = useRouter();
@@ -44,13 +44,16 @@ const Navbar = ({ session }) => {
   // const email = session?.user?.email;
 
   return (
-    <header className="bg-white text-black shadow-md sticky top-0 z-50 ">
+    <header
+      className="bg-gray-800 text-white shadow-md sticky top-0 z-50 "
+      dir={`${current_language === "ar" ? "rtl" : "ltr"}`}
+    >
       <div className="container mx-auto px-4 py-2 flex justify-between items-center h-15">
         {/* Logo */}
         <Image
-          src="/faizbot.webp"
-          width={200}
-          height={100}
+          src="/chatbot.png"
+          width={80}
+          height={40}
           alt="files-image"
           className="left-0"
         />
@@ -80,7 +83,7 @@ const Navbar = ({ session }) => {
           </button>
           <ul
             className={`flex flex-col md:flex-row md:space-x-6 text-2xl font-bold  justify-center items-center gap-4 ${
-              isOpen ? "text-white" : "text-black"
+              isOpen ? "text-white" : "text-white"
             }`}
           >
             <li>
@@ -94,10 +97,10 @@ const Navbar = ({ session }) => {
 
             <li>
               <Link
-                href="/pricing"
+                href="/register"
                 className="block py-2 px-4 rounded hover:bg-gray-700 md:hover:bg-transparent transition-all"
               >
-                {t("Pricing")}
+                جديد *{/* {t("Pricing")} */}
               </Link>
             </li>
             <li>
@@ -115,7 +118,7 @@ const Navbar = ({ session }) => {
                 onClick={toggleDropdown}
                 className="flex justify-center items-center gap-1 py-2 px-4 rounded hover:bg-gray-700 md:hover:bg-transparent transition-all"
               >
-                <GrLanguage /> {language}
+                <GrLanguage /> {current_language}
               </button>
               {dropdownOpen && (
                 <ul className="absolute left-0 mt-2 bg-gray-700 text-white rounded shadow-md w-48">
@@ -127,8 +130,13 @@ const Navbar = ({ session }) => {
                       href="/"
                       className="block px-4 py-2 hover:bg-gray-600 transition-colors"
                     >
-                      {" "}
-                      English{" "}
+                      <Image
+                        src="https://flagcdn.com/w40/gb.png"
+                        alt="English"
+                        width={24}
+                        height={16}
+                      />
+                      English
                     </a>
                   </li>
                   <li>
@@ -139,8 +147,13 @@ const Navbar = ({ session }) => {
                       href="/"
                       className="block px-4 py-2 hover:bg-gray-600 transition-colors"
                     >
-                      {" "}
-                      عربي{" "}
+                      <Image
+                        src="https://flagcdn.com/w40/sa.png"
+                        alt="English"
+                        width={24}
+                        height={16}
+                      />
+                      عربي
                     </a>
                   </li>
                 </ul>
@@ -152,7 +165,7 @@ const Navbar = ({ session }) => {
         {session ? (
           <div className="md:flex space-x-4">
             <Link href="/dashboard">
-              <button className="flex items-center justify-center gap-2 px-8 py-2 bg-gray-800 text-xl  text-white  rounded hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 transition-all">
+              <button className="flex items-center justify-center gap-2 px-8 py-2 bg-sky-600 text-xl  text-white  rounded hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 transition-all">
                 {session?.user?.image ? (
                   <Image
                     src={session?.user?.image}
@@ -177,7 +190,7 @@ const Navbar = ({ session }) => {
               </button>
             </Link> */}
             <Link href="/register">
-              <button className="px-4 py-2 text-xl bg-gray-800 text-white rounded hover:bg-gray-500 focus:ring-4 focus:ring-blue-300 transition-all">
+              <button className="px-4 py-2 text-xl bg-sky-600 text-white rounded hover:bg-gray-500 focus:ring-4 focus:ring-blue-300 transition-all">
                 {t("Try for Free")}
               </button>
             </Link>
@@ -194,7 +207,7 @@ const Navbar = ({ session }) => {
             </button>
           </Link> */}
           <Link href="/register">
-            <button className="w-full px-4 py-2 text-4xl bg-gray-800 text-white rounded hover:bg-gray-500 transition-all">
+            <button className="w-full px-4 py-2 text-4xl bg-sky-600 text-white rounded hover:bg-gray-500 transition-all">
               {t("Try for Free")}
             </button>
           </Link>

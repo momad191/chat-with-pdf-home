@@ -9,7 +9,7 @@ const redis = new Redis({
   url: 'https://suited-finch-58820.upstash.io',
   token: 'AeXEAAIjcDE5OGI2MDc1YTljMDg0MDFkYTZiMTk2MjkyYmRmNzBmM3AxMA',
 })
-export default async function Page({ params }) {
+export default async function Page({ params }) {  
     const id = (await params).id
 
     async function getAllListData(key) {

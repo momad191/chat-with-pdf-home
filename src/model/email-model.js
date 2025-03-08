@@ -3,6 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const EmailSchema = new Schema({
   subject: String,
   greeting: String,
+  message_body:String,
   signature: String,
   date: {
     type: Date,
@@ -14,4 +15,4 @@ const EmailSchema = new Schema({
   },
 });
 export const Email =
-  mongoose.models.Email ?? mongoose.model("Email", EmailSchema);
+  mongoose.models.Email ?? mongoose.model("Email", EmailSchema);  

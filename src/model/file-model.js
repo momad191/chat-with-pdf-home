@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
- 
+
 const fileSchema = new Schema({
   file_name: {
     required: true,
@@ -19,9 +19,8 @@ const fileSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
- 
 });
 
 export const File = mongoose.models.File ?? mongoose.model("File", fileSchema);

@@ -38,12 +38,12 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="flex flex-col bg-white items-center justify-center min-h-screen  px-4 sm:px-6 lg:px-6 shadow-md rounded-lg">
+    <div className="flex flex-col bg-white items-center justify-center min-h-screen  px-4 sm:px-6 lg:px-6 shadow-md ">
       <div className="text-xl text-red-500 mb-4">{error}</div>
       <form className="w-full max-w-md   p-6 space-y-4" onSubmit={onSubmit}>
         <Link
           href="/"
-          className="flex text-xl gap-4 justify-between items-center bg-gray-800 hover:bg-gray-500 hover:text-white rounded-xl p-4"
+          className="flex text-xl gap-4 justify-between items-center bg-sky-500 hover:bg-gray-700 hover:text-white rounded-xl p-4"
         >
           {" "}
           <AiOutlineArrowLeft />

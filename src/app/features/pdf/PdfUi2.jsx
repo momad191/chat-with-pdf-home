@@ -8,15 +8,19 @@ import { Chat } from "./pdfAction";
 import { ChatForTXT } from "./txtAction";
 import { ChatForDOCX } from "./docxAction";
 import { ChatForCSV } from "./csvAction";
-
+ 
 import Docx from "./viewer/docx";
 import Csv from "./viewer/csv";
 
 import { useTranslations } from "next-intl";
+import GetDefaultLanguage from "@/lib/getDefaultLanguage";
 
 import { extname } from "path";
+
+
 function PdfUi2({ file_id, chat_data }) {
   const t = useTranslations("PdfUi2");
+
 
   const [file, setFile] = useState({});
   const fileExtension = file.file_name ? extname(file.file_name) : "";
@@ -265,6 +269,14 @@ function PdfUi2({ file_id, chat_data }) {
       setShow(false);
     }
   };
+  
+
+  const [current_language, setCurrent_Language] = useState("");
+  
+  useEffect(() => {
+    const lang = GetDefaultLanguage();
+    setCurrent_Language(lang);
+  }, []);
 
   return (
     <div className="flex bottom-4 right-4 bg-white">
@@ -338,6 +350,7 @@ function PdfUi2({ file_id, chat_data }) {
                     ? "bg-gray-500 text-white"
                     : "bg-gray-200 text-black"
                 }`}
+                dir={`${current_language==="ar" ? "rtl":"ltr"}`}
               >
                 {msg.data.content}
               </div>
@@ -369,6 +382,8 @@ function PdfUi2({ file_id, chat_data }) {
                     ? "bg-gray-500 text-white"
                     : "bg-gray-200 text-black"
                 }`}
+
+                dir={`${current_language==="ar" ? "rtl":"ltr"}`}
               >
                 {msg.text}
               </div>

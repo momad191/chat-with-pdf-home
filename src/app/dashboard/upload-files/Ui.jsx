@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image"; 
 import { GiLevelFour } from "react-icons/gi";
 import UploadFormForPdf from "./Form-for-pdf";
 import UploadFormForTxt from "./Form-for-txt";
@@ -62,9 +63,20 @@ const UploadFileUi = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen w-screen bg-white">
-        <p className="text-lg text-black font-semibold">Loading...</p>
-      </div>
+        <div className="flex flex-col items-center bg-gray-800 justify-center h-screen w-screen  ">
+            <p className="items-center justify-center  text-white font-semibold transform transition-all duration-700 ease-in-out animate-bounce">
+               
+            <Image
+              src="/chatbot.png"
+              width={300}
+              height={200}
+              alt="files-image"
+              className="left-0"
+            />
+          
+            </p>
+           
+          </div>
     );
   }
 

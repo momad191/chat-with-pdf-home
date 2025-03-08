@@ -71,7 +71,7 @@ const Sidebar = ({ isOpen, session }) => {
             className="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-all"
           >
             <MdMarkEmailRead className="mr-3" size={18} />
-            Write Email
+            {t("Write Email")}
           </Link>
 
  
@@ -80,7 +80,7 @@ const Sidebar = ({ isOpen, session }) => {
             className="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-all"
           >
             <MdMarkEmailRead className="mr-3" size={18} />
-            My Emails
+             {t("My Emails")}
           </Link>
 
           <Link

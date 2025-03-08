@@ -7,9 +7,9 @@
     "Dashboard": "لوحة التحكم",
     "Login": "الدخول",
     "Try for Free": "جرب مجانا"
-  },
+  }, 
   "Home": {
-    "Chat with your files": "الدردشة مع ملفاتك الخاصة",
+    "Chat with your files": "يساعدك في الدردشة مع ملفاتك الخاصة وكتابة الرسائل",
     "Let AI summarize, find information, translate, transcribe, and get citations from your files in seconds": "دع الذكاء الاصطناعي يلخص ويجد المعلومات ويترجمها وينسخها ويحصل على اقتباسات من ملفاتك في ثوانٍ",
     "Upload your Files": "قم بتحميل ملفاتك",
     "Easily add your files and start chat them": "أضف ملفاتك بسهولة وابدأ الدردشة معها",
@@ -30,7 +30,7 @@
     "Don not you have an account?": "هل ليس لديك حساب؟",
     "Register": "التسجيل"
   },
-  "Register": {
+  "Register": {   
     "Home2": "الرئيسية",
     "Register": "التسجيل",
     "Name": "الاسم",
@@ -43,14 +43,16 @@
   },
   "ScocialRegister": {
     "Sign In With Google": "تسجيل الدخول باستخدام جوجل"
-  },
+  }, 
   "Sidebar": {
     "Hi": "مرحبا",
     "Welcome": "مرحبا",
     "Files": "ملفاتك",
     "Add new File": "اضف ملف جديد",
     "Upgrade": "الترقية",
-    "Account": "حسابك"
+    "Account": "حسابك",
+    "Write Email": "اكتب رسالة",
+    "My Emails": "قائمة الرسائل"
   },
   "SidebarWrapper": {
     "Open Side menu": "فتح القائمة الجانبية",
@@ -104,5 +106,59 @@
   "PdfUi2": {
     "summarize the provided context": "قم بتلخيص السياق المقدم",
     "What is the main idea of the provided context": "ما هي الفكرة الرئيسية للسياق المقدم؟"
-  }
+  },
+
+    "SidebarEmail": {
+      "Output Language:": "لغة الإخراج:",
+      "English": "الإنجليزية",
+      "French": "الفرنسية",
+      "Spanish": "الإسبانية",
+      "German": "الألمانية",
+      "Arabic": "العربية",
+      
+      "Text Type:": "نوع النص:",
+      "Email": "البريد الإلكتروني",
+      "Messenger": "الرسائل الفورية",
+  
+      "Text Length:": "طول النص:",
+      "Short": "قصير",
+      "Medium": "متوسط",
+      "Long": "طويل",
+  
+      "Writing Tone:": "نبرة الكتابة:",
+      "Formal": "رسمي",
+      "Friendly": "ودود",
+      "Brutal": "صارم",
+      "Persuasive": "إقناعي",
+      "Expert": "خبير",
+      "Joyful": "سعيد",
+      "Inspirational": "ملهم",
+      "Informative": "معلوماتي",
+      "Thoughtful": "مدروس",
+      "Cautionary": "تحذيري",
+      "Grieved": "حزين",
+      "Exciting": "مثير",
+      "Loving": "محب",
+      "Confident": "واثق",
+      "Surprised": "مندهش",
+  
+      "Use Emoji": "استخدام الإيموجي",
+      "With emoji": "مع الإيموجي",
+      "No emoji": "بدون إيموجي"
+  
+    },
+
+    "PromptInput": {
+      "Example:": "مثال:",
+      "Hi team, lets share a coffee together and start our meeting": "مرحبًا بالفريق، لنشرب القهوة معًا ونبدأ اجتماعنا:",
+      "Generate Email": "إنشاء بريد إلكتروني"
+
+    },
+    "OneEmailUi":{
+      "Email Details":"تفاصيل الرسالة",
+       "Subject":"الموضوع",
+       "Write new Email":"انشئ رسالة جديدة"
+    }
+  
+  
 }

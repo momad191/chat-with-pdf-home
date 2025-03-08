@@ -9,7 +9,7 @@
     "Try for Free": "Try for Free"
   },
   "Home": {
-    "Chat with your files": "Chat with your files",
+    "Chat with your files": "Helps you chat with your files and write messages.",
     "Let AI summarize, find information, translate, transcribe, and get citations from your files in seconds": "Let AI summarize, find information, translate, transcribe, and get citations from your files in seconds",
     "Upload your Files": "Upload your Files",
     "Easily add your files and start chat them": "Easily add your files and start chat and summaraize them.",
@@ -41,17 +41,19 @@
     "Go to Login": "Go to Login",
     "Welcome": "Welcome",
     "Sign In With Google": "Sign In With Google"
-  },
+  }, 
   "ScocialRegister": {
     "Sign In With Google": "Sign In With Google"
-  },
+  },  
   "Sidebar": {
     "Hi": "Hi",
     "Welcome": "Welcome",
     "Files": "Files",
     "Add new File": "Add new File",
     "Upgrade": "Upgrade",
-    "Account": "Account"
+    "Account": "Account",
+    "Write Email": "Write Email",
+    "My Emails": "My Emails"
   },
   "SidebarWrapper": {
     "Open Side menu": "Open Side menu",
@@ -105,5 +107,51 @@
   "PdfUi2": {
     "summarize the provided context": "summarize the provided context",
     "What is the main idea of the provided context": "What is the main idea of the provided context"
+  },
+  "SidebarEmail":{
+    "Output Language:": "Output Language:",
+    "English": "English",
+    "French": "French",
+    "Spanish": "Spanish",
+    "German": "German",
+    "Arabic": "Arabic",
+    "Text Type:": "Text Type:",
+    "Email": "Email",
+    "Messenger": "Messenger",
+
+    "Text Length:": "Text Length:",
+    "Short": "Short",
+    "Medium": "Medium",
+    "Long": "Long",
+
+    "Writing Tone:": "Writing Tone:",
+    "Formal": "Formal",
+    "Friendly": "Friendly",
+    "Brutal": "Brutal",
+    "Persuasive": "Persuasive",
+    "Expert": "Expert",
+    "Joyful": "Joyful",
+    "Inspirational": "Inspirational",
+    "Informative": "Informative",
+    "Thoughtful": "Thoughtful",
+    "Cautionary": "Cautionary",
+    "Grieved": "Grieved",
+    "Exciting": "Exciting",
+    "Loving": "Loving",
+    "Confident": "Confident",
+    "Surprised": "Surprised",
+    "Use Emoji": "Use Emoji",
+    "With emoji": "With emoji",
+    "No emoji": "No emoji"
+  },
+  "PromptInput":{
+    "Example:":"Example:",
+    "Hi team, lets share a coffee together and start our meeting":"Hi team, lets share a coffee together and start our meeting",
+    "Generate Email":"Generate Email"
+  },
+  "OneEmailUi":{
+    "Email Details":"Email Details",
+     "Subject":"Subject",
+     "Write new Email":"Write new Email"
   }
 }
