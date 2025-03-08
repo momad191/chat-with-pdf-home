@@ -1,10 +1,10 @@
-"use client";
+ "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IoMdChatboxes } from "react-icons/io";
 import { useTranslations } from "next-intl";
 
-const FilesTable = () => {
+const AllEmails = () => {
   const t = useTranslations("Files");
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true); // Track loading state
@@ -28,7 +28,7 @@ const FilesTable = () => {
 
   if (loading) {
     return (
-      <div className="xl:flex md:flex bg-gray-800 text-black items-center justify-center h-screen w-full">
+      <div className="xl:flex md:flex bg-gray-800 text-white items-center justify-center h-screen w-full">
     
         <p className="text-lg font-semibold">Loading...</p>
       </div>
@@ -81,7 +81,7 @@ const FilesTable = () => {
                     <button
                       className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 transition-all"
                       onClick={() =>
-                        window.open(`/features/pdf/${file._id}`, "_blank")
+                        window.open(`/features/write/all/dd`, "_blank")
                       }
                     >
                       <IoMdChatboxes /> {t("Chat")}
@@ -97,4 +97,4 @@ const FilesTable = () => {
   );
 };
 
-export default FilesTable;
+export default AllEmails;

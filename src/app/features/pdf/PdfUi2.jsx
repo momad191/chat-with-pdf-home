@@ -431,7 +431,7 @@ function PdfUi2({ file_id, chat_data }) {
             onClick={handleSubmitButton}
             className="ml-1 w-10 h-10 bg-accent rounded-full flex items-center justify-center"
           >
-            ➤
+            ➤ 
           </button>
         </div>
       </div>

@@ -13,12 +13,17 @@ const SidebarWrapper = ({session}) => {
  
     return (
         <>
+          
             <button
                 onClick={toggleSidebar}
-                className={`absolute font-bold  top-2 right-4 p-2 items-center justify-center bg-gray-800 text-white  fixed  z-50 rounded-xl hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 transition-all`}
+                className={`top-2 left-0 font-bold p-2 items-center justify-center bg-gray-800 text-white  fixed  z-50  hover:bg-gray-600 focus:ring-0 focus:ring-gray-300 transition-all`}
             >
-            {isOpen ?  <div className="flex items-center justify-center gap-2">  {t("Close Side menu")} <IoClose /> </div> :  <div className="flex items-center justify-center gap-2">  {t("Open Side menu")} <MdOpenInFull /> </div> }
+            {isOpen ?  <div className="flex items-center justify-center gap-2"> <IoClose /> {t("Close Side menu")}  </div> :  <div className="flex items-center justify-center gap-2"> <MdOpenInFull /> {t("Open Side menu")}  </div> }
             </button>
+
+            
+            
+          
             <Sidebar isOpen={isOpen}   session={session}  />  
         </>
     );

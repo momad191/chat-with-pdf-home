@@ -1,12 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import SidebarWrapper from "../../../components/SidebarWrapper";
 import SubscriptionButton from "@/components/SubscriptionButton";
 import { FaCheckCircle } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 
-const Upgrade = ({ session, isPro }) => {
+const Upgrade = ({ isPro }) => {
   const t = useTranslations("Upgrade");
 
   const router = useRouter();
@@ -100,16 +99,15 @@ const Upgrade = ({ session, isPro }) => {
 
 
   return (
-    <div className="md:flex ">
-      <SidebarWrapper session={session} />
+   
 
-      <div className="min-h-screen flex  items-center justify-center  w-[100%]  bg-gradient-to-b bg-white p-6">
+      <div className="min-h-screen flex  items-center justify-center  w-[100%] bg-gray-800 text-white p-6">
         <div className="text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold   mb-4">
             {" "}
             {t("Upgrade to Plus")}
           </h2>
-          <p className="text-lg font-normal text-gray-700 mb-8">
+          <p className="text-lg font-normal  mb-8">
             {t("Take advantage of the features after upgrading")} /
             <span className="text-red-800"> {t("cancel any time")} </span>
           </p>
@@ -156,7 +154,7 @@ const Upgrade = ({ session, isPro }) => {
         </div>
 
 
-      </div>
+     
     </div>
   );
 };

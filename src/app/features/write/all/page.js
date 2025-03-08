@@ -1,6 +1,7 @@
-import FilesUi from "./FilesUi"
+
 import { auth } from "@/auth";
 import SidebarWrapper from "@/components/SidebarWrapper";
+import AllEmails from "./AllEmails";
 
 
 const page = async () => {
@@ -9,7 +10,7 @@ const session = await auth();
   return (
     <div className=" md:flex ">
     <SidebarWrapper session={session} />
-    <FilesUi />
+     <AllEmails />
     </div>
     
   )

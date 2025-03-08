@@ -70,11 +70,11 @@ const UploadFileUi10 = () => {
 
   if (files.length < 10) {
     return (
-      <div className=" flex flex-col  w-[100%] h-screen  items-center justify-center bg-gradient-to-b  bg-white ">
-        <div className="flex gap-10 items-center justify-center">
+      <div className=" flex flex-col  w-full h-screen  items-center justify-center bg-gray-800 ">
+        <div className="flex gap-0 mb-10 items-center justify-center">
           <button
             onClick={changeToPDF}
-            className={`bg-sky-300 text-black p-7 hover:bg-sky-500 hover:text-white 
+            className={`bg-sky-300 text-black p-2 hover:bg-sky-500 hover:text-white border-r  rounded-tl-xl rounded-bl-xl
         ${isPDF && "bg-sky-800 text-white"}
         `}
           >
@@ -83,7 +83,7 @@ const UploadFileUi10 = () => {
 
           <button
             onClick={changeToWORD}
-            className={`bg-sky-300 text-black p-7 hover:bg-sky-500 hover:text-white  
+            className={`bg-sky-300 text-black p-2 hover:bg-sky-500 hover:text-white  border-r  
               ${isWORD && `bg-sky-800 text-white`}
               `}
           >
@@ -92,7 +92,7 @@ const UploadFileUi10 = () => {
 
           <button
             onClick={changeToTXT}
-            className={`bg-sky-300 text-black p-7 hover:bg-sky-500 hover:text-white  
+            className={`bg-sky-300 text-black p-2 hover:bg-sky-500 hover:text-white  border-r 
               ${isTXT && `bg-sky-800 text-white`}
               `}
           >
@@ -101,7 +101,7 @@ const UploadFileUi10 = () => {
 
            <button
             onClick={changeToCsv}
-            className={`bg-sky-300 text-black p-7 hover:bg-sky-500 hover:text-white  
+            className={`bg-sky-300 text-black p-2 hover:bg-sky-500 hover:text-white  rounded-tr-xl rounded-br-xl 
               ${isCSV && `bg-sky-800 text-white`}
               `}
           >
